@@ -41,3 +41,13 @@ You should now be able to see [View Count Data](http://localhost:3000/view-count
 ## Configuration
 
 Modify [config/default.json](./config/default.json) to update server configs, **NOTE**: Doing this will break `npm run dev-all`
+
+## Curl Booking Examples
+
+### Add a New Company
+
+    curl -X POST "http://localhost:3000/company" -H "Content-Type: application/json" -d '{"name": "New Place Here"}'
+
+### Get Bookings for a Company
+
+    curl http://localhost:3000/company/1

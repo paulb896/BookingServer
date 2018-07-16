@@ -15,6 +15,7 @@
       "name": "Dentist"
     },
     {
+      "name": "Cactus Club",
       "id": 2
     },
     {
@@ -28,6 +29,20 @@
     {
       "name": "Burger Shack",
       "id": 5
+    },
+    {
+      "name": "Pizza Hut",
+      "id": 6
+    },
+    {
+      "name": {
+        "name": "Movie Theatre"
+      },
+      "id": 7
+    },
+    {
+      "name": "New Place Here",
+      "id": 8
     }
   ],
   "bookings": [

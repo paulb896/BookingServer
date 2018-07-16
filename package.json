@@ -18,6 +18,7 @@
     "axios": "^0.18.0",
     "config": "^1.30.0",
     "koa": "^2.5.2",
+    "koa-body": "^4.0.4",
     "koa-generic-session": "^2.0.1",
     "koa-redis": "^3.1.2",
     "koa-router": "^7.4.0",

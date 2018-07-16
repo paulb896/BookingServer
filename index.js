@@ -135,10 +135,13 @@ router.post('/company', koaBody(), async (ctx, next) => {
  */
 router.post('/company/:companyId/booking', koaBody(), async (ctx, next) => {
     const { startTime, endTime, email } = ctx.request.body;
+    const { companyId } = ctx.params;
+
     await axios({
         method: 'post',
         url: `${remoteDbUrl}/bookings`,
         data: {
+            companyId: parseInt(companyId, 10),
             startTime,
             endTime,
             email

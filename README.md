@@ -48,6 +48,10 @@ Modify [config/default.json](./config/default.json) to update server configs, **
 
     curl -X POST "http://localhost:3000/company" -H "Content-Type: application/json" -d '{"name": "New Place Here"}'
 
+### Add a Booking for a Company
+
+    curl -X POST "http://localhost:3000/company/2/booking" -H "Content-Type: application/json" -d '{"startTime": "Start Date Time", "endTime": "End Date Time", "email": "user@email.com"}'
+
 ### Get Bookings for a Company
 
     curl http://localhost:3000/company/1

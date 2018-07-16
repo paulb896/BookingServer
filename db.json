@@ -33,13 +33,24 @@
     {
       "name": "Pizza Hut",
       "id": 6
+    },
+    {
+      "name": "New Place Here",
+      "id": 7
     }
   ],
   "bookings": [
     {
       "id": 1,
-      "company": 1,
+      "companyId": 1,
       "description": "Standard cleaning"
+    },
+    {
+      "companyId": 2,
+      "startTime": "Start Date Time",
+      "endTime": "End Date Time",
+      "email": "user@email.com",
+      "id": 3
     }
   ]
 }

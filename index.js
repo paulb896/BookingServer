@@ -81,12 +81,14 @@ router.get('/company/:id', async (ctx, next) => {
                     } else {
                         reject();
                     }
-                })
+                }).catch(error => reject(error))
             } else {
                 ctx.body = JSON.parse(companyData);
                 resolve();
             }
         });
+    }).catch(error => {
+        // TODO: Log debug message
     })
 
     redisClient.incr('totalViews');

@@ -33,16 +33,6 @@
     {
       "name": "Pizza Hut",
       "id": 6
-    },
-    {
-      "name": {
-        "name": "Movie Theatre"
-      },
-      "id": 7
-    },
-    {
-      "name": "New Place Here",
-      "id": 8
     }
   ],
   "bookings": [

@@ -72,15 +72,15 @@ router.get('/view-counter', async (ctx, next) => {
  * Get Company Booking Endpoint that returns company details
  * and all bookings for that company.
  */
-router.get('/company/:id', async (ctx, next) => {
-    const companyId = ctx.params.id;
+router.get('/company/:companyId', async (ctx, next) => {
+    const { companyId } = ctx.params;
     const companyCacheKey = `company-${companyId}`;
 
     await next();
     await new Promise((resolve, reject) => {
         redisClient.get(companyCacheKey, (err, companyData) => {
             if (err || !companyData) {
-                let fullCompany = {message: 'no data'};
+                let fullCompany = { message: 'no data' };
                 const company = axios(`${remoteDbUrl}/companies/${companyId}`);
                 const booking = axios(`${remoteDbUrl}/bookings?company=${companyId}`);
 
@@ -113,15 +113,51 @@ router.get('/company/:id', async (ctx, next) => {
  * Add a company.
  */
 router.post('/company', koaBody(), async (ctx, next) => {
+    const { name } = ctx.request.body;
+
     await axios({
         method: 'post',
         url: `${remoteDbUrl}/companies`,
         data: {
-            name: ctx.request.body.name
+            name
         }
     }).then(result => {
-
+        // Set company in session here
+        ctx.body = {
+            message: 'Company Created',
+            data: result.data
+        };
     })
+});
+
+/**
+ * Add a booking for a specific company at a start/end time with a contact email.
+ */
+router.post('/company/:companyId/booking', koaBody(), async (ctx, next) => {
+    const { startTime, endTime, email } = ctx.request.body;
+    await axios({
+        method: 'post',
+        url: `${remoteDbUrl}/bookings`,
+        data: {
+            startTime,
+            endTime,
+            email
+        }
+    }).then(result => {
+        ctx.body = {
+            message: 'Booking Created',
+            data: result.data
+        };
+    })
+});
+
+/**
+ * Load Company into session
+ */
+router.get('/company-load/:companyId', koaBody(), async (ctx, next) => {
+    // Authenticate user
+    // Verify that user is allowed to load company
+    // Add active company into session
 });
 
 /**

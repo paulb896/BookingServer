@@ -40,4 +40,4 @@ You should now be able to see [View Count Data](http://localhost:3000/view-count
 
 ## Configuration
 
-    Modify [config/default.json](config/default.json) to update server configs, NOTE: Doing this will break `npm run dev-all`
+Modify [config/default.json](./config/default.json) to update server configs, **NOTE**: Doing this will break `npm run dev-all`

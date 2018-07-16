@@ -1,16 +1,27 @@
+/**
+ * Appointment Booking Server that uses Koa2
+ */
+
+const config = require('config');
 const Koa = require('koa');
 const Router = require('koa-router');
 const axios = require('axios');
 const session  = require('koa-generic-session')
 const redisStore = require('koa-redis');
 const redis = require('redis');
-const redisClient = redis.createClient();
+
+// Initialize Database
+const remoteDbUrl = config.has('remoteDbUrl') ? config.get('remoteDbUrl') : 'http://localhost:4000';
+const dbPort = config.has('dbPort') ? config.get('dbPort') : 6379;
+const dbHost = config.has('dbHost') ? config.get('dbHost') : 'localhost';
+const redisClient = redis.createClient(dbPort, dbHost);
 
 // Initialize App and router
+const port = config.get('bookingServerPort') ? config.get('bookingServerPort') : 3000;
 const app = new Koa();
 const router = new Router();
 const storage = redisStore({
-    url: 'redis://localhost:6379'
+    url: `redis://${dbHost}:${dbPort}`
 });
 app.keys = ['keys-this-is-a-test', 'keykeys'];
 app.use(session({
@@ -65,8 +76,8 @@ router.get('/company/:id', async (ctx, next) => {
         redisClient.get(companyCacheKey, (err, companyData) => {
             if (err || !companyData) {
                 let fullCompany = {message: 'no data'};
-                const company = axios(`http://localhost:4000/companies/${companyId}`);
-                const booking = axios(`http://localhost:4000/bookings?company=${companyId}`);
+                const company = axios(`${remoteDbUrl}/companies/${companyId}`);
+                const booking = axios(`${remoteDbUrl}/bookings?company=${companyId}`);
 
                 Promise.all([company, booking]).then((responses) => {
                     if (responses.length === 2) {
@@ -93,7 +104,7 @@ router.get('/company/:id', async (ctx, next) => {
     redisClient.incr('totalViews');
 })
 
-app.listen(3000);
+app.listen(port);
 app.use(async (ctx, next) => {
     try {
         await next();

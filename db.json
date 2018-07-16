@@ -16,6 +16,18 @@
     },
     {
       "id": 2
+    },
+    {
+      "name": "Barber",
+      "id": 3
+    },
+    {
+      "name": "Mechanic",
+      "id": 4
+    },
+    {
+      "name": "Burger Shack",
+      "id": 5
     }
   ],
   "bookings": [

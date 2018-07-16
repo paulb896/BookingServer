@@ -34,6 +34,10 @@ You should now be able to see [View Count Data](http://localhost:3000/view-count
 
     json-server --watch db.json --port 4000
 
-## Run Main Index Server for Development
+### Run Main Index Server for Development
 
     npm run dev
+
+## Configuration
+
+    Modify [config/default.json](config/default.json) to update server configs, NOTE: Doing this will break `npm run dev-all`

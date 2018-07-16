@@ -1,0 +1,6 @@
+{
+    "bookingServerPort": 3000,
+    "remoteDbUrl": "http://localhost:4000",
+    "dbPort": 6379,
+    "dbHost": "localhost"
+}

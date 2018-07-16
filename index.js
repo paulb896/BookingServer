@@ -57,9 +57,8 @@ router.get('/view-counter', async (ctx, next) => {
  * and all bookings for that company.
  */
 router.get('/company/:id', async (ctx, next) => {
-    const userId = 1;
     const companyId = ctx.params.id;
-    const companyCacheKey = `user-${userId}-company-${companyId}`;
+    const companyCacheKey = `company-${companyId}`;
 
     await next();
     await new Promise((resolve, reject) => {

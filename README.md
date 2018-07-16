@@ -23,7 +23,7 @@ You should now be able to see [View Count Data](http://localhost:3000/view-count
 
 ## Run each server individually
 
-### Run Redis Docker on Port *6555*
+### Run Redis with Docker
 
     docker run redis
 

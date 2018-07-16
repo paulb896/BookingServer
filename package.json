@@ -1,0 +1,25 @@
+{
+  "name": "booking_server",
+  "version": "1.0.0",
+  "description": "Booking Server",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon",
+    "dev-all": "sh dev-all.sh",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "koa",
+    "bookings"
+  ],
+  "author": "Paul Beauchamp",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "koa": "^2.5.2",
+    "koa-generic-session": "^2.0.1",
+    "koa-redis": "^3.1.2",
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.8.2"
+  }
+}

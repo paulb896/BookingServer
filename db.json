@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Paul"
+    },
+    {
+      "name": "jack",
+      "id": 2
+    }
+  ],
+  "companies": [
+    {
+      "id": 1,
+      "name": "Dentist"
+    },
+    {
+      "id": 2
+    }
+  ],
+  "bookings": [
+    {
+      "id": 1,
+      "company": 1,
+      "description": "Standard cleaning"
+    }
+  ]
+}
